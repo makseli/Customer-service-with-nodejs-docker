@@ -1,5 +1,5 @@
 
-# Customer Service with nodejs docker 
+# Customer Service with nodejs+docker 
 
 This is a customer service API Backend application. It is powered by NodeJS and Docker and allows you to use different databases (such as MongoDB, PostgreSQL, or MySQL). Thank you for your contributions.
 
@@ -27,6 +27,20 @@ ENGINE=MyISAM
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci;
 ```
+## RUN
+---------------------
+``` bash
+cp .env.example .env # end set your correct connection defination
+```
+Run with npm
+``` bash
+npm start
+```
+or docker compsoe
+``` bash
+docker compose -f development-docker-compose.yml up -d # docker port 3034
+```
+---------------------
 
 ## Success run looks like
 
