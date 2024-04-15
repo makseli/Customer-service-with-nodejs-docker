@@ -1,0 +1,43 @@
+services:
+  # for Node.js app
+  app:
+    build: 
+      context: .
+      dockerfile: development-dockerfile
+    ports:
+      - '3034:3034'
+    environment:
+      NODE_ENV: development
+      PORT: 3034
+      DB_CONNECTION: mysql
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: mypassword
+      MYSQL_DATABASE: mydatabase
+    depends_on:
+      - mysql
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - backend
+  # MySQL for db service
+  mysql:
+    image: mysql:8.3.0
+    hostname: mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mypassword
+      MYSQL_DATABASE: mydatabase
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - backend
+volumes:
+  mysql_data:
+
+networks:
+  backend:
+    driver: bridge
