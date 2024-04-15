@@ -2,17 +2,18 @@
   "name": "customer-service-with-nodejs-docker",
   "version": "1.0.0",
   "description": "",
-  "main": "src/app.js",
+  "main": "./src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Mustafa Akseli",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongoose": "^8.3.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "run": "^1.5.0"
   }
 }
