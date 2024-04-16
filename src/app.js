@@ -1,5 +1,3 @@
-// app.js dosyası
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
@@ -72,11 +70,13 @@ app.get('/customers/:id', async (req, res) => {
 // New Customer
 app.post('/customers', async (req, res) => {
   const customerData = req.body;
+  console.log("request for customer create ", customerData);
   try {
     const newCustomer = await service.createCustomer(customerData);
-    console.log("request for customer create ", customerData);
+    
     res.status(201).json(newCustomer);
   } catch (error) {
+    console.log("ERR customer create: ", error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });

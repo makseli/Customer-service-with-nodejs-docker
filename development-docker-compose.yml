@@ -14,6 +14,7 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: mypassword
       MYSQL_DATABASE: mydatabase
+      MYSQL_PORT: 3306
     depends_on:
       - mysql
     volumes:
