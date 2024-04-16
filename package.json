@@ -1,6 +1,6 @@
 {
   "name": "customer-service-with-nodejs-docker",
-  "version": "1.0.0",
+  "version": "1.0.34",
   "description": "",
   "main": "./src/app.js",
   "scripts": {
