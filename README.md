@@ -11,10 +11,9 @@ TODO
 - [x] Posqresql implementation
 - [x] Mysql implementation
 - [ ] Write test :)
-- [x] Run With Docker-Compose for development environment
-- [ ] Run With Docker-Compose for production environment
+- [x] Run With Docker-Compose
 
-for sql create table;
+for mysql create table;
 ``` sql
 CREATE TABLE mydatabase.customers (
 	id BIGINT NOT NULL,
@@ -22,13 +21,28 @@ CREATE TABLE mydatabase.customers (
 	name varchar(100) NOT NULL,
 	email varchar(100) NOT NULL
 )
--- remove after for postgresql
 ENGINE=MyISAM 
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci;
 
 ALTER TABLE mydatabase.customers MODIFY COLUMN id bigint auto_increment NOT NULL;
 ```
+
+
+for postgresql create table;
+``` sql
+CREATE TABLE customers (
+  id        SERIAL PRIMARY KEY,
+  name      VARCHAR(100) NOT NULL,
+  email  	VARCHAR(100) NULL
+);
+```
+
+for mongodb;
+``` sql
+db.createCollection("Customer");
+```
+
 ## RUN
 ---------------------
 ``` bash
@@ -40,7 +54,7 @@ npm start
 ```
 or docker compsoe
 ``` bash
-docker compose -f development-docker-compose.yml up -d # docker port 3034
+docker compose up -d # docker port 3034
 ```
 ---------------------
 
@@ -51,3 +65,10 @@ docker compose -f development-docker-compose.yml up -d # docker port 3034
 ## CRUD Operation Success run looks like
 
 ![screenshot](./docs/list.png)
+
+## Mongo ScreenShots
+![screenshot](./docs/mongo_driver.png)
+
+![screenshot](./docs/mongo_post.png)
+
+![screenshot](./docs/mongo_list.png)

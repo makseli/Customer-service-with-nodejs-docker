@@ -1,0 +1,82 @@
+services:
+  # for Node.js app
+  app:
+    build: 
+      context: .
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - '3034:3034'
+    environment:
+    # development or production
+      NODE_ENV: production
+      PORT: 3034
+      # Database postgresql or mongodb or mysql
+      DB_CONNECTION: mongodb
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: mypassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_PORT: 3306
+      POSTGRES_URI: postgres://root:mypassword@postgres:5432/mydatabase
+      MONGODB_URI: mongodb://mongo_user:mongo_password@mongo:27017/
+    depends_on:
+      - mysql
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - backend
+  # MySQL for db service
+  mysql:
+    image: mysql:8.3.0
+    hostname: mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mypassword
+      MYSQL_DATABASE: mydatabase
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - backend
+# PostgreSQL service
+  postgres:
+    image: postgres:13
+    hostname: postgres
+    container_name: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  # MongoDB service
+  mongo:
+    image: mongo:7.0.8
+    hostname: mongo
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo_user
+      MONGO_INITDB_ROOT_PASSWORD: mongo_password
+      MONGO_INITDB_DATABASE: mydatabase
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - backend
+
+volumes:
+  mysql_data:
+  postgres_data:
+  mongo_data:
+
+networks:
+  backend:
+    driver: bridge

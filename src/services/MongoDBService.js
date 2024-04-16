@@ -7,6 +7,18 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+const customerSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String
+  }
+});
+
+const Customer = mongoose.model('Customer', customerSchema, 'customers');
+
 class MongoDBService extends DatabaseService {
   constructor() {
     super(); // DatabaseService call constructor
@@ -81,13 +93,13 @@ class MongoDBService extends DatabaseService {
   }
   async testConnection() {
     // Check db conn.
-    try {
-      await this.db().command({ ping: 1 });
+    const isConnected = this.db.readyState === 1; // 1: Connect
+
+    if (isConnected) {
       console.log('Database connection is active.');
       return true;
-
-    } catch (error) {
-      console.error('Database connection error:', error);
+    } else {
+      console.error('Database connection is not active.');
       return false;
     }
   }
