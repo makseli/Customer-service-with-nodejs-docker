@@ -10,7 +10,7 @@ TODO
 - [x] MongoDB implementation
 - [x] Posqresql implementation
 - [x] Mysql implementation
-- [ ] Write test :)
+- [x] Coding test
 - [x] Run With Docker-Compose
 
 for mysql create table;
@@ -72,3 +72,9 @@ docker compose up -d # docker port 3034
 ![screenshot](./docs/mongo_post.png)
 
 ![screenshot](./docs/mongo_list.png)
+
+## Test
+Before running the tests, make sure that the customers tables exist in the databases.
+
+![screenshot](./docs/test_result.png)
+
