@@ -1,7 +1,25 @@
 
 # Customer Service with nodejs+docker 
 
-This is a customer service API Backend application. It is powered by NodeJS and Docker and allows you to use different databases (such as MongoDB, PostgreSQL, or MySQL). Thank you for your contributions.
+This is a customer service API Backend application. It is powered by NodeJS and Docker and allows you to use different databases (such as MongoDB, PostgreSQL, or MySQL). 
+
+## Key Features:
+
+**Technology Stack**: Node.js, Express.js, MongoDB, MySQL, PostgreSQL
+
+**Containerization**: Docker Compose for development and production environments
+
+**Database Abstraction**: Utilized database service interfaces for MongoDB, MySQL, and PostgreSQL
+
+**Testing**: Implemented comprehensive unit tests using Jest framework
+
+**RESTful API**: CRUD operations for customer management with robust error handling
+
+**Environment Variables**: Managed configuration using dotenv for secure deployment
+
+**Repository Link**: https://github.com/makseli/customer-service-with-nodejs-docker
+
+I invite you to explore the codebase to gain insights into my development practices and methodologies. Feel free to reach out if you have any questions or feedback.
 
 TODO
 
@@ -12,6 +30,8 @@ TODO
 - [x] Mysql implementation
 - [x] Coding test
 - [x] Run With Docker-Compose
+- [ ] CI/CD entegration
+- [ ] Swagger Api Documentation
 
 for mysql create table;
 ``` sql
